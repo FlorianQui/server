@@ -85,3 +85,24 @@ exports.update = (req, res) => {
         });
     });
 };
+
+exports.delete = (req, res) => {
+    Setup.findByIdAndRemove(req.params.setupId)
+    .then(setup => {
+        if(!setup) {
+            return res.status(404).send({
+                message: "Setup not found with id " + req.params.setupId
+            });
+        }
+        res.send({message: "setup deleted successfully!"});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "setup not found with id " + req.params.setupId
+            });
+        }
+        return res.status(500).send({
+            message: "Could not delete setup with id " + req.params.setupId
+        });
+    });
+};

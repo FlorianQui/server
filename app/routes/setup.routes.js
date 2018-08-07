@@ -9,5 +9,5 @@ module.exports = (app) => {
 
   app.put('/karting/setup/:setupId', setup.update);
 
-  //app.delete('/karting/setup/:setupId', setup.delete);
+  app.delete('/karting/setup/:setupId', setup.delete);
 }
