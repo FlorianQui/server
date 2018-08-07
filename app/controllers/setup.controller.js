@@ -54,3 +54,34 @@ exports.findOne = (req, res) => {
         });
     });
 };
+
+exports.update = (req, res) => {
+    // Validate Request
+    if(empty(req.body)) {
+        return res.status(400).send({
+            message: "Setup content can not be empty"
+        });
+    }
+    let newSetup = new Setup(req.body);
+    newSetup._id = req.params.setupId;
+    // Find setup and update it with the request body
+    Setup.findByIdAndUpdate(req.params.setupId, newSetup)
+    .then(setup => {
+        if(!setup) {
+            return res.status(404).send({
+                message: "setup not found with id " + req.params.setupId
+            });
+        }
+        res.send(setup);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Setup not found with id " + req.params.setupId
+            });
+        }
+        console.log(err.kind);
+        return res.status(500).send({
+            message: "Error updating setup with id " + req.params.setupId
+        });
+    });
+};
