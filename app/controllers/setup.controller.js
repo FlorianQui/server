@@ -26,7 +26,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     Setup.find()
     .then(setups => {
-        res.send(setups);
+        res.status(200).json(setups);
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving setup."
