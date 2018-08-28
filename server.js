@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+var env = require('dotenv').load();
+
 // create express app
 const app = express();
 
