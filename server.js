@@ -17,6 +17,8 @@ app.use(cors());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
+var port = process.env.PORT || 1337;
+
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
