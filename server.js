@@ -41,5 +41,5 @@ require('./app/routes/setup.routes.js')(app);
 
 // listen for requests
 app.listen(port, () => {
-    console.log("Server is listening on port %d", port);
+    console.log("Server is listening on port 1337");
 });
