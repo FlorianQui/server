@@ -17,7 +17,7 @@ app.use(cors());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
-var port = process.env.PORT || 1337;
+var port = process.env.PORT || 8080;
 
 mongoose.Promise = global.Promise;
 
@@ -39,5 +39,5 @@ require('./app/routes/setup.routes.js')(app);
 
 // listen for requests
 app.listen(port, () => {
-    console.log("Server is listening on port 1337");
+    console.log("Server is listening on port 8080");
 });
