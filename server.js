@@ -17,7 +17,7 @@ app.use(cors());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 
@@ -32,7 +32,7 @@ mongoose.connect(dbConfig.url)
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.send("test ok");
+    res.send("Bienvenue");
 });
 
 require('./app/routes/setup.routes.js')(app);
