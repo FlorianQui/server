@@ -19,11 +19,6 @@ app.use(cors());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
-var mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb://flox27:sfuG3QDDBX1flTZyViq0JnhDB4fOxZjVrjtSKALg0KeYyoX2lMCbK76aZs1jm8CdPmq2uUxwvKIEQawBw4e0gg%3D%3D@flox27.documents.azure.com:10255/?ssl=true", function (err, client) {
-  client.close();
-});
-
 var port = process.env.PORT || 1337;
 
 mongoose.Promise = global.Promise;
@@ -46,5 +41,5 @@ require('./app/routes/setup.routes.js')(app);
 
 // listen for requests
 app.listen(port, () => {
-    console.log("Server is listening on port 3000");
+    console.log("Server is listening on port %d", port);
 });
